@@ -1,0 +1,62 @@
+@use '@carbon/colors';
+@use '@carbon/layout';
+@use '@carbon/type';
+@use '@openmrs/esm-styleguide/src/vars' as *;
+
+.viewToggleContainer {
+  padding: layout.$spacing-04 layout.$spacing-05;
+  border-bottom: 1px solid colors.$gray-20;
+  background-color: colors.$white;
+
+  @media (max-width: 768px) {
+    padding: layout.$spacing-03 layout.$spacing-04;
+  }
+
+  @media (max-width: 480px) {
+    padding: layout.$spacing-02 layout.$spacing-03;
+  }
+
+  .buttonGroup {
+    display: flex;
+    gap: layout.$spacing-02;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 480px) {
+      gap: layout.$spacing-01;
+    }
+
+    .toggleButton {
+      min-width: 80px;
+      flex: 1;
+      min-width: 70px;
+      white-space: nowrap;
+
+      @media (max-width: 768px) {
+        min-width: 70px;
+        font-size: 0.875rem;
+        padding: layout.$spacing-02 layout.$spacing-03 !important;
+      }
+
+      @media (max-width: 480px) {
+        min-width: 60px;
+        font-size: 0.75rem;
+        padding: layout.$spacing-01 layout.$spacing-02 !important;
+      }
+
+      &:focus {
+        outline: 2px solid colors.$blue-60;
+        outline-offset: 2px;
+      }
+    }
+  }
+}
+
+// Overriding styles for RTL support
+html[dir='rtl'] {
+  .viewToggleContainer {
+    .buttonGroup {
+      flex-direction: row-reverse;
+    }
+  }
+}
