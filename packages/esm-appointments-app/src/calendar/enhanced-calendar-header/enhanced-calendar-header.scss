@@ -1,0 +1,135 @@
+@use '@carbon/colors';
+@use '@carbon/layout';
+@use '@carbon/type';
+@use '@openmrs/esm-styleguide/src/vars' as *;
+
+.enhancedCalendarHeader {
+  padding: layout.$spacing-04 layout.$spacing-05;
+  border-bottom: 2px solid colors.$gray-20;
+  background-color: colors.$white;
+
+  @media (max-width: 768px) {
+    padding: layout.$spacing-03 layout.$spacing-04;
+  }
+
+  @media (max-width: 480px) {
+    padding: layout.$spacing-02 layout.$spacing-03;
+  }
+
+  .headerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: layout.$spacing-04;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: layout.$spacing-03;
+    }
+
+    @media (max-width: 480px) {
+      gap: layout.$spacing-02;
+    }
+
+    .navigationSection {
+      display: flex;
+      align-items: center;
+      gap: layout.$spacing-02;
+      flex: 1;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      @media (max-width: 480px) {
+        gap: layout.$spacing-01;
+      }
+
+      .navButton {
+        min-width: 40px;
+        padding: 0 layout.$spacing-02;
+        flex-shrink: 0;
+
+        @media (max-width: 480px) {
+          min-width: 36px;
+          padding: 0 layout.$spacing-01;
+        }
+
+        &:hover {
+          background-color: colors.$blue-30;
+        }
+
+        &:focus {
+          outline: 2px solid colors.$blue-60;
+          outline-offset: 2px;
+        }
+
+        :global(svg) {
+          width: 20px;
+          height: 20px;
+
+          @media (max-width: 480px) {
+            width: 18px;
+            height: 18px;
+          }
+        }
+      }
+
+      .dateRange {
+        @include type.type-style('heading-02');
+        color: colors.$black;
+        margin: 0 layout.$spacing-03;
+        flex: 1;
+        text-align: center;
+        min-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @media (max-width: 768px) {
+          @include type.type-style('productive-heading-01');
+          margin: 0;
+          min-width: auto;
+        }
+
+        @media (max-width: 480px) {
+          @include type.type-style('body-compact-01');
+          font-weight: 600;
+          margin: 0 layout.$spacing-01;
+        }
+      }
+    }
+
+    .todayButton {
+      white-space: nowrap;
+      flex-shrink: 0;
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 0.875rem;
+        padding: layout.$spacing-02 layout.$spacing-03 !important;
+      }
+    }
+  }
+}
+
+// Overriding styles for RTL support
+html[dir='rtl'] {
+  .enhancedCalendarHeader {
+    .headerContent {
+      .navigationSection {
+        flex-direction: row-reverse;
+
+        .dateRange {
+          text-align: center;
+        }
+      }
+    }
+  }
+}

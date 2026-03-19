@@ -8,10 +8,10 @@
   "license": "MPL-2.0",
   "homepage": "https://github.com/openmrs/openmrs-esm-patient-management#readme",
   "scripts": {
-    "start": "openmrs develop",
+    "start": "node init && openmrs develop",
     "serve": "rspack serve --mode=development",
     "debug": "npm run serve",
-    "build": "rspack --mode production",
+    "build": "node init && rspack --mode production",
     "analyze": "rspack --mode=production --env.analyze=true",
     "lint": "cross-env eslint src --ext ts,tsx",
     "test": "cross-env TZ=UTC jest --config jest.config.js --verbose false --passWithNoTests --color",
