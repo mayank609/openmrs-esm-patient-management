@@ -2,22 +2,66 @@
 @use '@carbon/layout';
 @use '@openmrs/esm-styleguide/src/vars' as *;
 
+.appointmentsCalendarWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: colors.$white;
+
+  .calendarControls {
+    display: flex;
+    flex-direction: column;
+    background-color: colors.$gray-10;
+  }
+}
+
 .wrapper {
   position: relative;
 }
+
 .monthlyCalendar {
   display: grid;
   grid-template-columns: repeat(7, minmax(0px, 1fr));
   grid-template-rows: repeat(6, minmax(0px, 1fr));
+  gap: layout.$spacing-01;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(7, minmax(60px, 1fr));
+    gap: 0;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(7, minmax(50px, 1fr));
+  }
 }
 
 .calendarViewContainer {
-  margin: layout.$spacing-05;
+  padding: layout.$spacing-04;
+  flex: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+
+  @media (max-width: 1200px) {
+    padding: layout.$spacing-03;
+  }
+
+  @media (max-width: 768px) {
+    padding: layout.$spacing-02;
+  }
 }
+
 .backgroundColor {
   margin: 1px 0 0;
   transition: width 0.24s ease-in-out;
   position: relative;
   min-height: calc(100vh - 80px);
   background-color: colors.$white;
+}
+
+// Overriding styles for RTL support
+html[dir='rtl'] {
+  .appointmentsCalendarWrapper {
+    direction: rtl;
+  }
 }

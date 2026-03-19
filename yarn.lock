@@ -1120,6 +1120,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@internationalized/date@npm:^3.5.0":
+  version: 3.12.0
+  resolution: "@internationalized/date@npm:3.12.0"
+  dependencies:
+    "@swc/helpers": "npm:^0.5.0"
+  checksum: 10/0bc2e95385e156362a07a8788e93b4b380b43170cca75c19a9a72cb1840c1c701bb0d1fa67d9ba5e2fbc1e44b5bea29bca02b325d0daa2f960b92a71898ede92
+  languageName: node
+  linkType: hard
+
 "@internationalized/date@npm:^3.8.0, @internationalized/date@npm:^3.8.2":
   version: 3.8.2
   resolution: "@internationalized/date@npm:3.8.2"
@@ -2294,6 +2303,7 @@ __metadata:
   dependencies:
     "@carbon/react": "npm:^1.83.0"
     "@hookform/resolvers": "npm:^3.9.1"
+    "@internationalized/date": "npm:^3.5.0"
     classnames: "npm:^2.3.2"
     formik: "npm:^2.2.9"
     lodash-es: "npm:^4.17.15"
