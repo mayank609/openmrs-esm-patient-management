@@ -1,0 +1,100 @@
+@use '@carbon/colors';
+@use '@carbon/layout';
+@use '@carbon/type';
+@use '@openmrs/esm-styleguide/src/vars' as *;
+
+.calendarSystemSelector {
+  display: flex;
+  flex-direction: column;
+  gap: layout.$spacing-02;
+  padding: layout.$spacing-03 layout.$spacing-04;
+  background-color: colors.$white;
+  border-bottom: 1px solid colors.$gray-20;
+
+  @media (max-width: 768px) {
+    padding: layout.$spacing-02 layout.$spacing-03;
+    gap: layout.$spacing-01;
+  }
+
+  @media (max-width: 480px) {
+    padding: layout.$spacing-02;
+    gap: layout.$spacing-01;
+  }
+
+  .label {
+    @include type.type-style('label-01');
+    color: colors.$black;
+    font-weight: 600;
+    display: block;
+    margin-bottom: layout.$spacing-01;
+
+    @media (max-width: 480px) {
+      @include type.type-style('caption-01');
+      margin-bottom: 0;
+    }
+  }
+
+  :global(.bx--dropdown__wrapper) {
+    width: 100%;
+    min-width: 0;
+  }
+
+  :global(.bx--dropdown) {
+    width: 100%;
+  }
+
+  :global(.bx--dropdown__toggle) {
+    width: 100%;
+
+    @media (max-width: 480px) {
+      min-height: 40px;
+      padding: layout.$spacing-02 layout.$spacing-03;
+      font-size: 0.875rem;
+    }
+  }
+
+  :global(.bx--dropdown-list) {
+    max-height: 300px;
+
+    @media (max-width: 480px) {
+      max-height: 250px;
+      font-size: 0.875rem;
+    }
+  }
+
+  :global(.bx--list-box__menu-item) {
+    @media (max-width: 480px) {
+      padding: layout.$spacing-02 layout.$spacing-03;
+    }
+  }
+
+  :global(.bx--dropdown-text) {
+    @media (max-width: 480px) {
+      font-size: 0.875rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+// Overriding styles for RTL support
+html[dir='rtl'] {
+  .calendarSystemSelector {
+    text-align: right;
+    direction: rtl;
+
+    .label {
+      text-align: right;
+    }
+
+    :global(.bx--dropdown__toggle) {
+      direction: rtl;
+    }
+
+    :global(.bx--dropdown-list) {
+      direction: rtl;
+      text-align: right;
+    }
+  }
+}

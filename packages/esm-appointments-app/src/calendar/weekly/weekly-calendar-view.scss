@@ -1,0 +1,72 @@
+@use '@carbon/colors';
+@use '@carbon/layout';
+@use '@carbon/type';
+@use '@openmrs/esm-styleguide/src/vars' as *;
+
+.weeklyCalendarView {
+  padding: layout.$spacing-05;
+
+  @media (max-width: 768px) {
+    padding: layout.$spacing-03;
+  }
+
+  @media (max-width: 480px) {
+    padding: layout.$spacing-02;
+  }
+
+  .weekHeader {
+    margin-bottom: layout.$spacing-04;
+    padding-bottom: layout.$spacing-03;
+    border-bottom: 2px solid colors.$gray-20;
+
+    @media (max-width: 480px) {
+      margin-bottom: layout.$spacing-02;
+      padding-bottom: layout.$spacing-02;
+    }
+
+    .weekRange {
+      @include type.type-style('heading-02');
+      color: colors.$black;
+      margin: 0;
+      word-break: break-word;
+
+      @media (max-width: 768px) {
+        @include type.type-style('heading-03');
+      }
+
+      @media (max-width: 480px) {
+        @include type.type-style('body-short-01');
+        font-weight: 600;
+      }
+    }
+  }
+
+  .weekGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: layout.$spacing-03;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: layout.$spacing-02;
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: layout.$spacing-01;
+    }
+  }
+}
+
+// Overriding styles for RTL support
+html[dir='rtl'] {
+  .weeklyCalendarView {
+    .weekHeader {
+      text-align: right;
+    }
+  }
+}

@@ -17,6 +17,23 @@ export const isSameMonth = (cellDate: Dayjs, currentDate: Dayjs) => {
   return cellDate.isSame(currentDate, 'month');
 };
 
+export const isSameDay = (cellDate: Dayjs, currentDate: Dayjs) => {
+  return cellDate.isSame(currentDate, 'day');
+};
+
+export const isSameWeek = (cellDate: Dayjs, currentDate: Dayjs) => {
+  return cellDate.isSame(currentDate, 'week');
+};
+
+export const weekDays = (currentDate: Dayjs) => {
+  const weekStart = dayjs(currentDate).startOf('week');
+  let days: Dayjs[] = [];
+  for (let i = 0; i < 7; i++) {
+    days.push(weekStart.add(i, 'day'));
+  }
+  return days;
+};
+
 export const monthDays = (currentDate: Dayjs) => {
   const monthStart = dayjs(currentDate).startOf('month');
   const monthEnd = dayjs(currentDate).endOf('month');
