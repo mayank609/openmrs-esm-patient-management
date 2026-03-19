@@ -14,9 +14,17 @@ export interface MonthlyWorkloadViewProps {
   events: Array<DailyAppointmentsCountByService>;
   dateTime: Dayjs;
   showAllServices?: boolean;
+  onDaySelect?: (dateTime: Dayjs) => void;
+  onModalOpen?: (dateTime: Dayjs, serviceUuid?: string) => void;
 }
 
-const MonthlyWorkloadView: React.FC<MonthlyWorkloadViewProps> = ({ dateTime, events, showAllServices = false }) => {
+const MonthlyWorkloadView: React.FC<MonthlyWorkloadViewProps> = ({
+  dateTime,
+  events,
+  showAllServices = false,
+  onDaySelect,
+  onModalOpen,
+}) => {
   const layout = useLayoutType();
   const selectedDate = useSelectedDate();
 
@@ -45,7 +53,13 @@ const MonthlyWorkloadView: React.FC<MonthlyWorkloadViewProps> = ({ dateTime, eve
   }, [currentData?.services, layout, showAllServices]);
 
   const navigateToAppointmentsByDate = (serviceUuid: string) => {
-    navigate({ to: `${spaHomePage}/appointments/${dayjs(dateTime).format('YYYY-MM-DD')}/${serviceUuid}` });
+    if (onModalOpen) {
+      onModalOpen(dateTime, serviceUuid);
+    } else if (onDaySelect) {
+      onDaySelect(dateTime);
+    } else {
+      navigate({ to: `${spaHomePage}/appointments/${dayjs(dateTime).format('YYYY-MM-DD')}/${serviceUuid}` });
+    }
   };
 
   return (
